@@ -1,6 +1,6 @@
 (function () {
   const iframe = document.createElement("iframe");
-  iframe.src = "https://my-chatbot.vercel.app"; // 🔁 Replace with your deployed chatbot URL
+  iframe.src = "https://shopify-chatbot-phi.vercel.app/"; // 🔁 Replace with your deployed chatbot URL
   iframe.style.position = "fixed";
   iframe.style.bottom = "20px";
   iframe.style.right = "20px";
