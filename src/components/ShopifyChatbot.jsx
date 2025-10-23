@@ -1127,7 +1127,7 @@ export default function ShopifyChatbot() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
                   placeholder={awaitingConfirmation ? 'Type yes or no...' : 'Type your answer...'}
-                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-500"
+                  className="flex-1 border border-gray-300 text-black rounded-lg px-4 py-2 focus:outline-none focus:border-green-500"
                 />
                 <button
                   onClick={handleSubmit}
