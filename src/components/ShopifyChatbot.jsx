@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Upload, X, Check, Bot, User, MessageCircle, Sparkles } from 'lucide-react';
 
-export default function ShopifyChatbot() {
+export default function ShopifyChatbot({ embedded = false }) {
   const [messages, setMessages] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [inputValue, setInputValue] = useState('');
@@ -378,6 +378,11 @@ export default function ShopifyChatbot() {
   };
 
   if (!isOpen) {
+    // In embedded mode we don't show the floating open button (the embed host
+    // should control visibility). Return nothing to avoid a black/oversized
+    // placeholder inside the iframe.
+    if (embedded) return null;
+
     return (
       <button
         onClick={() => setIsOpen(true)}
@@ -388,8 +393,12 @@ export default function ShopifyChatbot() {
     );
   }
 
+  const containerClass = embedded
+    ? 'w-full h-full bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden'
+    : 'fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50 overflow-hidden';
+
   return (
-    <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col z-50 overflow-hidden">
+    <div className={containerClass}>
       {showHomeScreen ? (
         <div className="h-full flex flex-col bg-gradient-to-br from-green-400 to-green-600">
           <div className="flex justify-end p-4">
